@@ -1,36 +1,39 @@
 function migratoryBirds(arr) {
 
-    let quantidadeDePassaros = [];
     let contador = 0;
     let jaContou = [];
-    let flag = false;
 
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr.length; j++) {
-            console.log(`arr${[i]}: ${arr[i]} , arr${j}: ${arr[j]}`)
             if (arr[i] === arr[j]) {
                 contador++
-                console.log(`contador: ${contador}`)
             }
-
         }
-        quantidadeDePassaros.push(contador)
-
-        jaContou.push(arr[i])
-        console.log(`ja contou: ${jaContou}`)
-        let novoArr = jaContou[0]
-
-        for (let n = 1; n < jaContou.length; n++) {
-            if (jaContou[n] === novoArr) {
-                flag = true
-            }
-
-            flag = false
-        }
-
+        jaContou.push(contador)
+        contador = 0
     }
-    return quantidadeDePassaros;
+
+    let maiorNumero = 0;
+    let indiceDoMaiorNumero = 0;
+
+    for (let indice = 0; indice < jaContou.length; indice++) {
+        if (jaContou[indice] > maiorNumero) {
+            maiorNumero = jaContou[indice]
+            indiceDoMaiorNumero = indice
+        }
+    }
+
+    let tipo = 5;
+
+    for (let n = 0; n < jaContou.length; n++) {
+        if (jaContou[n] === maiorNumero && arr[n] < tipo) {
+            tipo = arr[n]
+        }
+    }
+
+    return tipo;
 }
+
 const arr = [1, 4, 4, 4, 5, 3]
 
 const result = migratoryBirds(arr)
