@@ -9,17 +9,22 @@ function pageCount(n, p) {
         return parseInt(diferencaPrimeiraPagEpaginaN)
     } else {
         if (n % 2 === 1) {
-            diferencaEntrePeN = (diferencaEntrePeN - 1) / 2
+            diferencaEntrePeN = (diferencaEntrePeN) / 2
         } else if (n % 2 === 0) {
             diferencaEntrePeN = (diferencaEntrePeN + 1) / 2
         }
-        return parseInt(diferencaEntrePeN)
+    }
+    if (diferencaEntrePeN < 0) {
+        diferencaEntrePeN = parseInt(diferencaEntrePeN * -1)
+    } else {
+        diferencaEntrePeN = parseInt(diferencaEntrePeN)
     }
 
+    return diferencaEntrePeN;
 }
 
-const n = 37455;
-const p = 29835;
+const n = 59867;
+const p = 35733;
 
 const result = pageCount(n, p)
 console.log(result)
