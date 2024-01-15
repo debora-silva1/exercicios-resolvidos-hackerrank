@@ -1,8 +1,15 @@
+// function mod(num) {
+//     if (num >= 0) {
+//         return num;
+//     } else {
+//         return -num
+//     }
+// }
 function catAndMouse(x, y, z) {
 
-    const distanciaGatoA = ((z - x));
-    const distanciaGatoB = ((y - z));
-    console.log(distanciaGatoA, distanciaGatoB)
+    const distanciaGatoA = Math.abs(z - x);
+    const distanciaGatoB = Math.abs(y - z);
+
     let resposta = ''
 
     if (distanciaGatoA === distanciaGatoB) {
