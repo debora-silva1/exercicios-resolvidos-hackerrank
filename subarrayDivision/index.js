@@ -3,9 +3,10 @@ function birthday(s, d, m) {
 
     for (let i = 0; i <= s.length - m; i++) {
         let soma = 0;
+        console.log(`for externo : ${i}`)
 
         for (let j = i; j < i + m; j++) {
-            console.log(s[j])
+            console.log(`for interno: ${s[i]}, ${s[j]}`)
             soma = soma + s[j];
         }
 
