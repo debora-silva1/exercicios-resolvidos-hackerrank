@@ -1,32 +1,29 @@
 function pickingNumbers(a) {
-    let subConjuntos = [];
-    let novoSubConjunto = []
-    let flag = false;
-    let indice = 0;
 
-    for (let i = 0; i < a.length; i++) {
-        for (let j = 0; j < a.length; j++) {
-            let diferencaAbs = Math.abs(a[i] - a[j])
-            if (diferencaAbs <= 1) {
-                novoSubConjunto.push(a[j])
-                console.log(novoSubConjunto)
-                let maiorValor = Math.max(...novoSubConjunto)
-                let menorValor = Math.min(...novoSubConjunto)
-                if (novoSubConjunto[indice] === maiorValor || novoSubConjunto[indice] === menorValor) {
-                    flag = true
-                }
+    const arrayOrdenado = a.sort();
+    let conjuntos = [];
+    let subconjuntos = [];
+
+    for (let i = 0; i < arrayOrdenado.length; i++) {
+        for (let j = i; j < arrayOrdenado.length; j++) {
+            let diferencaAbsoluta = Math.abs(arrayOrdenado[i] - arrayOrdenado[j])
+            if (diferencaAbsoluta <= 1) {
+                subconjuntos.push(arrayOrdenado[j])
             }
-
         }
-        indice++
-        subConjuntos.push(novoSubConjunto)
-        novoSubConjunto = []
-        flag = false
+        conjuntos.push(subconjuntos)
+        subconjuntos = []
     }
-
-    return subConjuntos;
+    let maiorConjunto = 0;
+    for (let conjunto of conjuntos) {
+        let tamanhoDoConjunto = conjunto.length
+        if (tamanhoDoConjunto > maiorConjunto) {
+            maiorConjunto = tamanhoDoConjunto
+        }
+    }
+    return maiorConjunto;
 }
 
-const a = [4, 6, 5, 3, 3, 1]
+const a = [1, 2, 2, 3, 1, 2]
 const result = pickingNumbers(a)
 console.log(result)
